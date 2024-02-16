@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #303030;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #424242;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+        }
+
+        .result h2 {
+            color: #4CAF50;
+        }
+
+        .result table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .result th, .result td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .result th {
+            background-color: #333;
+            color: white;
+        }
+
+        .result tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <title>{{ title }} Sentiment Analysis</title>
+</head>
+<body>
+<div class="container">
+    <h1>Sentiment Analysis VADER Sentiment</h1>
+    <p>A machine learning end to end flask web app for <b>"Sentiment Analysis" </b>model created using Scikit-learn &amp; VADER Sentiment.</p>
+    <form method="POST">
+        <textarea name="text1" placeholder="Say Something: ...." rows="10" cols="50"></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if final %}
+    <div class="result">
+        <h2>The Sentiment of</h2>
+        <h2>'{{ text1 }}'</h2>
+        <h2>is {{ final *100}}% positive !</h2>
+        <h2>Score table</h2>
+        <table>
+            <tr>
+                <th>SENTIMENT METRIC</th>
+                <th>SCORE</th>
+            </tr>
+            <tr>
+                <td>Positive</td>
+                <td>{{ text2 }}</td>
+            </tr>
+            <tr>
+                <td>Neutral</td>
+                <td>{{ text3 }}</td>
+            </tr>
+            <tr>
+                <td>Negative</td>
+                <td>{{ text5 }}</td>
+            </tr>
+            <tr>
+                <td>Compound</td>
+                <td>{{ text4 }}</td>
+            </tr>
+        </table>
+    </div>
+    {% else %}
+    <p></p>
+    {% endif %}
+</div>
+</body>
+</html>
